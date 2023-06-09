@@ -1,5 +1,8 @@
-<div class="dropdown d-grid">
-  <button type="button" data-bs-toggle="dropdown" class="btn btn-lg btn-inverse btn-block dropdown-toggle"><i class="fa-solid fa-cart-shopping"></i> {{ text_items }}</button>
+<div class="dropdown d-grid position-relative cart_btn_wrapper">
+  <button type="button" data-bs-toggle="dropdown" class="btn btn_shopping_cart dropdown-toggle">
+   <i class="fa-solid fa-cart-shopping"></i> 
+   <span> {{ text_items }}</span>
+  </button>
   <ul class="dropdown-menu dropdown-menu-right" style="width: 500px;">
     {% if products or vouchers %}
       <li>

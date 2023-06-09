@@ -1,6 +1,6 @@
 <?php
 // Text
-$_['text_items']                 = '%s item(s) - %s';
+$_['text_items']                 = '%s';
 $_['text_points']                = 'Reward Points';
 $_['text_subscription']          = 'Subscription';
 $_['text_subscription_trial']    = '%s every %d %s(s) for %d payment(s) then ';

@@ -3,12 +3,12 @@
 define('APPLICATION', 'Admin');
 
 // HTTP
-define('HTTP_SERVER', 'http://127.0.0.1:81/opencartpro/admin/');
+define('HTTP_SERVER', 'http://127.0.0.1:81/opencartpro/admin123/');
 define('HTTP_CATALOG', 'http://127.0.0.1:81/opencartpro/');
 
 // DIR
 define('DIR_OPENCART', 'C:/xampp/htdocs/opencartpro/');
-define('DIR_APPLICATION', DIR_OPENCART . 'admin/');
+define('DIR_APPLICATION', DIR_OPENCART . 'admin123/');
 define('DIR_EXTENSION', DIR_OPENCART . 'extension/');
 define('DIR_IMAGE', DIR_OPENCART . 'image/');
 define('DIR_SYSTEM', DIR_OPENCART . 'system/');
