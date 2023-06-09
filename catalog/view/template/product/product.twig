@@ -27,21 +27,24 @@
         </div>
         <div class="col-sm">
           <h1>{{ heading_title }}</h1>
-          <ul class="list-unstyled">
-            {% if manufacturer %}
-              <li>{{ text_manufacturer }} <a href="{{ manufacturers }}">{{ manufacturer }}</a></li>
-            {% endif %}
-            <li>{{ text_model }} {{ model }}</li>
-            {% if reward %}
-              <li>{{ text_reward }} {{ reward }}</li>
-            {% endif %}
-            <li>{{ text_stock }} {{ stock }}</li>
-          </ul>
-          {% if price %}
-            <ul class="list-unstyled">
+          {% if review_status %}
+                <div class="rating">
+                  <div>{% for i in 1..5 %}
+                      {% if rating < i %}
+                        <span class="fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                      {% else %}
+                        <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                      {% endif %}
+                    {% endfor %}
+                    <a href="" onclick="$('a[href=\'#tab-review\']').tab('show'); return false;">(<small>{{ text_reviews }}</small>)</a>  
+                </div>
+              {% endif %}
+          
+            {% if price %}
+            <ul class="list-unstyled d-flex align-items-center mt-3">
               {% if not special %}
-                <li>
-                  <h2><span class="price-new">{{ price }}</span></h2>
+                <li class="me-2">
+                  <h2 class="mb-0 text-highlighted"><span class="price-new">{{ price }}</span></h2>
                 </li>
               {% else %}
                 <li><span class="price-old">{{ price }}</span></li>
@@ -63,8 +66,20 @@
               {% endif %}
             </ul>
           {% endif %}
+          
+          <ul class="list-unstyled">
+            {% if manufacturer %}
+              <li>{{ text_manufacturer }} <a href="{{ manufacturers }}">{{ manufacturer }}</a></li>
+            {% endif %}
+            <li>{{ text_model }} {{ model }}</li>
+            {% if reward %}
+              <li>{{ text_reward }} {{ reward }}</li>
+            {% endif %}
+            <li>{{ text_stock }} {{ stock }}</li>
+          </ul>
+        
           <form method="post" data-oc-toggle="ajax">
-            <div class="btn-group">
+            <div class="btn-group product_actions_btns">
               <button type="submit" formaction="{{ add_to_wishlist }}" data-bs-toggle="tooltip" class="btn btn-light" title="{{ button_wishlist }}"><i class="fa-solid fa-heart"></i></button>
               <button type="submit" formaction="{{ add_to_compare }}" data-bs-toggle="tooltip" class="btn btn-light" title="{{ button_compare }}"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
             </div>
@@ -210,24 +225,19 @@
                   <label for="input-quantity" class="form-label">{{ entry_qty }}</label> <input type="text" name="quantity" value="{{ minimum }}" size="2" id="input-quantity" class="form-control"/> <input type="hidden" name="product_id" value="{{ product_id }}" id="input-product-id"/>
                   <div id="error-quantity" class="form-text"></div>
                   <br/>
-                  <button type="submit" id="button-cart" class="btn btn-primary btn-lg btn-block">{{ button_cart }}</button>
+                  <div class="d-flex align-items-center">
+                    <button type="submit" id="button-cart" class="btn btn-primary btn-lg btn-block me-2">{{ button_cart }}</button>
+                    {% if review_status %}
+                      <a class="btn btn-primary btn-lg btn-block" href="" onclick="$('a[href=\'#tab-review\']').tab('show'); return false;">{{ text_write }}</a></p>
+                    {% endif %}
+                  </div>
+                  
                 </div>
                 {% if minimum > 1 %}
                   <div class="alert alert-info"><i class="fa-solid fa-circle-info"></i> {{ text_minimum }}</div>
                 {% endif %}
               </div>
-              {% if review_status %}
-                <div class="rating">
-                  <p>{% for i in 1..5 %}
-                      {% if rating < i %}
-                        <span class="fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
-                      {% else %}
-                        <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
-                      {% endif %}
-                    {% endfor %}
-                    <a href="" onclick="$('a[href=\'#tab-review\']').tab('show'); return false;">{{ text_reviews }}</a> / <a href="" onclick="$('a[href=\'#tab-review\']').tab('show'); return false;">{{ text_write }}</a></p>
-                </div>
-              {% endif %}
+              
             </form>
           </div>
         </div>
