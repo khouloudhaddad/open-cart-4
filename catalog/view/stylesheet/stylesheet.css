@@ -802,3 +802,19 @@ footer h5 {
 .text-highlighted{
   color: var(--secondary);
 }
+
+.carousel-indicators [data-bs-target]{
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  background-color: var(--primary);
+  border-color: transparent;
+  width: 12px;
+  height: 12px;
+}
+
+.carousel{
+  box-shadow: none;
+}
